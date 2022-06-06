@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+  <form method="post" th:object="${client}">
+    <div class="form-group">
+      <label for="clientname">Enter your name</label>
+      <input type="text" name="name" th:value="${name}" class="form-control" id="clientname" placeholder="Enter name">
+    </div>
+    <div class="form-group mb-2">
+      <label for="telephone">Enter your phone number</label>
+      <input type="tel" name="tel" th:value="${tel}" class="form-control" id="telephone" placeholder="Enter telephone">
+    </div>
+    <button type="submit" class="btn btn-primary">Booking</button><!--th:value="${procedure.id}"-->
+  </form>
+</div>
+
+</body>
+</html>

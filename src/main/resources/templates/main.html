@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Beauty trend - m</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg">
+            <h4>Procedures in our salon!</h4>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Procedure</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Price</th>
+                <th scope="col">Choose</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${procedures.empty}">
+                <td colspan="2"> No Procedures Available </td>
+            </tr>
+            <tr th:each="procedure : ${procedures}">
+                <td scope="row"><span th:text="${procedure.id}">1</span></td>
+                <td><span th:text="${procedure.title}">Title</span></td>
+                <td><span th:text="${procedure.tag}">Tag</span></td>
+                <td><span th:text="${procedure.price}">Price</span></td>
+                <td> <a class="btn btn-primary" th:href="@{/procedures/{id}(id=${procedure.id})}">Choose</a></td>
+            </tr>
+        </tbody>
+    </table>
+        <form class="form-inline" th:method="post" action="filter">
+           <div class="form-group mx-sm-3 mb-2">
+                <label for="inputFilter" class="sr-only">Filter</label>
+                <input type="text" name="filter" class="form-control" id="inputFilter" placeholder="Female or Male">
+           </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+        <form class="form-inline" method="get" action="main">
+            <button type="submit" class="btn btn-primary mb-2">Return</button>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

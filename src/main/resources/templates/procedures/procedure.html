@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrate procedure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="col-lg"> <h3>Hello, <span th:text="${client.name}"></span></h3>
+    <h4>You chose <span th:text="${procedure.title}"></span></h4>
+  </div>
+  <div class="row">
+    <form action="booking" method="post">
+      <div class="form-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Master</label>
+        </div>
+          <select name="mastername" class="form-control" id="inputGroupSelect01">
+              <option selected>Choose...</option>
+              <option type="text" th:each="master : ${masters}" th:text="${master.name}">Master name</option>
+          </select>
+      </div>
+      <div class="form-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect02">Date</label>
+        </div>
+        <select name="date" class="form-control" id="inputGroupSelect02">
+          <option selected>Choose...</option>
+          <option type="text"  th:each="date : ${dates}" th:text="${date.date}">Date</option>
+        </select>
+      </div>
+      <div class="form-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect03">Time</label>
+        </div>
+        <select name="time" class="form-control" id="inputGroupSelect03">
+          <option selected>Choose...</option>
+          <option  th:each="t : ${dates}" th:text="${t.time}">Time</option>
+      </select></div>
+      <button type="submit" name="id" th:value="${procedure.id}" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
